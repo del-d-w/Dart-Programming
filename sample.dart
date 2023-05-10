@@ -642,3 +642,144 @@ double doublep = x1.truncateToDouble(); // integerPart is 3.0
 print(doublep); // 3.0
 
 }
+
+--------------------------------------------------------------------------------------
+Operators
+---------------------------------------------------------------------------------------
+
+void main(){
+  // 1. % (modulo)
+  print(5 % 3); // 2
+  print(-5 % 3); // 1
+  print(5 % -3); // 2
+  print(-5 % -3); // 1
+
+  // 2. * (mutliplication)
+
+    print(5 * 3); // 15
+    print(-5 * 3); // -15
+    print(5 * -3); // -15
+    print(-5 * -3); // 15
+
+  // 3. + (addtion)
+
+    print(5 + 3); // 8
+    print(-5 + 3); // -2
+    print(5 + -3); // 2
+    print(-5 + -3); // -8
+  
+  // 4. - (substraction)
+
+    print(5 - 3); // 2
+    print(-5 - 3); // -8
+    print(5 - -3); // 8
+    print(-5 - -3); // -2
+
+  // 5. / (divison)
+
+    print(5 / 3); // 1.6666666666666667
+    print(-5 / 3); // -1.6666666666666667
+    print(5 / -3); // -1.6666666666666667
+    print(-5 / -3); // 1.6666666666666667
+
+  // 6. < (lessthan)
+
+    print(5 < 3); // false
+    print(-5 < 3); // true
+    print(5 < -3); // false
+    print(-5 < -3); // true
+
+  // 7. > (greaterthan)
+
+    print(5 > 3); // true
+    print(-5 > 3); // false
+    print(5 > -3); // true
+    print(-5 > -3); // false
+
+  // 8. <= (lessthan or equal to)
+
+    print(5 <= 3); // false
+    print(-5 <= 3); // true
+    print(5 <= -3); // false
+    print(-5 <= -3); // true
+
+  // 9. >= (greaterthan or equal to)
+
+    print(5 >= 3); // true
+    print(-5 >= 3); // false
+    print(5 >= -3); // true
+    print(-5 >= -3); // false
+
+  // 10. == (is equal to)
+
+    print(5 == 3); // false
+    print(-5 == 3); // false
+    print(5 == -3); // false
+    print(-5 == -3); // false
+    
+  // 11. unary Operator
+
+/* The unary operators in Dart are used to perform operations on a single operand. They include:
+Unary plus operator (+): Indicates a positive value.
+Unary negation operator (-): Negates the operand.
+Prefix increment operator (++a): Increments the operand by one before returning its value.
+Prefix decrement operator (--a): Decrements the operand by one before returning its value.
+Postfix increment operator (a++): Increments the operand by one after returning its value.
+Postfix decrement operator (a--): Decrements the operand by one after returning its value.
+Logical negation operator (!): Inverts the value of a boolean expression. */
+
+var a=10;
+  print(10); // 10
+  print(-10); // -10
+
+  // ++a increments the value of a and returns the updated value, which is then printed. So the output is 11.
+  print(++a); // 11
+
+  // --a decrements the value of a and returns the updated value, which is then printed. So the output is 10.
+  print(--a); // 10
+
+  // a++ increments the value of a but returns the original value of a before the increment. So the output is 10.
+  print(a++); // 10
+
+  // a-- decrements the value of a but returns the original value of a before the decrement. So the output is 11.
+  print(a--); // 11
+
+  print(!true); // false
+
+ // 12. ~ Truncating division operator. (converting float number to int like 10.0 to 10)
+
+  print(50~/5);
+
+  // 13. Parse: The parse method is a built-in method in Dart, used to parse a string representation of a number and return its corresponding numerical value.
+  var myInt = int.parse("42"); 
+  print(myInt); // myInt = 42
+  var myDouble = double.parse("3.14"); 
+  print(myDouble); // myDouble = 3.14
+
+  // 14. tryParse :The tryParse method is used to parse a string as a number and returns null if the string cannot be parsed as a number. It can be used to handle the case where the input may or may not be a valid number.
+  String input = "123";
+  num? result = num.tryParse(input);
+
+  if (result != null) {
+    print("Parsed number: $result"); //Parsed number: 123
+    print(result.runtimeType); //int
+  } else {
+    print("Could not parse input as a number");
+  }
+
+  //more examples for tryParse
+
+  print(num.tryParse('2021')); // 2021
+  print(num.tryParse('3.14')); // 3.14
+  print(num.tryParse('  3.14 \xA0')); // 3.14
+  print(num.tryParse('0.')); // 0.0
+  print(num.tryParse('.0')); // 0.0
+  print(num.tryParse('-1.e3')); // -1000.0
+  print(num.tryParse('1234E+7')); // 12340000000.0
+  print(num.tryParse('+.12e-9')); // 1.2e-10
+  print(num.tryParse('-NaN')); // NaN
+  print(num.tryParse('0xFF')); // 255
+  print(num.tryParse(double.infinity.toString())); // Infinity
+  print(num.tryParse('1f')); // null
+
+}
