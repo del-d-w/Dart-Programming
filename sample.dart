@@ -343,3 +343,302 @@ String greeting = "Hello, world!";
     onNonMatch: (n) => n);
   print(sresult); // Dart (is) fun
 }
+
+
+-------------------------------------------------------------------------------------------
+  Number Methods
+  https://api.dart.dev/stable/dart-core/num-class.html
+-------------------------------------------------------------------------------------------
+  
+  void main() {
+/*1. hashCode: Returns a hash code for a numerical value.
+The hash code is compatible with equality. It returns the same value for an int and a double with the same numerical value, and therefore the same value for the doubles zero and minus zero.
+No guarantees are made about the hash code of NaN values 
+int get hashCode;
+*/
+  final myNumber = 42;
+  print(myNumber.hashCode); // 487242
+
+/* 2. isFinite: Returns a true or false
+  Whether this number is finite.
+  The only non-finite numbers are NaN values, positive infinity, and negative infinity. All integers are finite.
+  All numbers satisfy exactly one of isInfinite, isFinite and isNaN.
+  bool get isFinite;*/
+
+  final a = 5;
+  final b = double.infinity;
+  final c = double.nan;
+
+  print(a.isFinite); // true
+  print(b.isFinite); // false
+  print(c.isFinite); // false
+
+/* 3. isInfinite: Returns a true or false
+Whether this number is positive infinity or negative infinity.
+Only satisfied by double.infinity and double.negativeInfinity.
+All numbers satisfy exactly one of isInfinite, isFinite and isNaN.
+bool get isInfinite;
+*/
+
+  final a1 = 5;
+  final b1 = double.infinity;
+  final c1 = double.nan;
+
+  print(a1.isInfinite); // false
+  print(b1.isInfinite); // true
+  print(c1.isInfinite); // false
+
+/* 4. isNaN: Returns a true or false
+Whether this number is a Not-a-Number value.
+Is true if this number is the double.nan value or any other of the possible double NaN values. Is false if this number is an integer, a finite double or an infinite double (double.infinity or double.negativeInfinity).
+All numbers satisfy exactly one of isInfinite, isFinite and isNaN.
+bool get isNaN;
+*/
+  final a2 = 5;
+  final b2 = double.infinity;
+  final c2 = double.nan;
+
+  print(a2.isNaN); // false
+  print(b2.isNaN); // false
+  print(c2.isNaN); // true
+
+/* 5. isNegative: Returns a true or false
+Whether this number is negative.
+A number is negative if it's smaller than zero, or if it is the double -0.0. This precludes a NaN value like double.nan from being negative.
+bool get isNegative;
+*/
+  final a3 = -5;
+  final b3 = double.infinity;
+  final c3 = double.nan;
+  final d3=5;
+
+  print(a3.isNegative); // true
+  print(b3.isNegative); // false
+  print(c3.isNegative); // false
+  print(d3.isNegative); // false
+
+  /* 6. sign: Returns a vaue 1, -1, 0
+Negative one, zero or positive one depending on the sign and numerical value of this number.
+The value minus one if this number is less than zero, plus one if this number is greater than zero, and zero if this number is equal to zero.
+Returns NaN if this number is a double NaN value.
+Returns a number of the same type as this number. For doubles, (-0.0).sign is -0.0.
+The result satisfies:
+n == n.sign * n.abs()
+for all numbers n (except NaN, because NaN isn't == to itself).
+Implementation
+num get sign; */
+
+  double ad = 3.14;
+  double bd = -5.6;
+  double cd = 0;
+  int ad1=5;
+  int bd1=-5;
+  int cd1=0;
+  print(ad.sign); // 1.0
+  print(bd.sign); // -1.0
+  print(cd.sign); // 0.0
+  print(ad1.sign); // 1
+  print(bd1.sign); // -1
+  print(cd1.sign); // 0
+
+/* 7. abs(): 
+The absolute value of this number.
+The absolute value is the value itself, if the value is non-negative, and -value if the value is negative.
+Integer overflow may cause the result of -value to stay negative.
+Implementation
+num abs();
+*/
+print((2).abs()); // 2
+print((-2.5).abs()); // 2.5
+
+/* 8. ceil(): 
+The least integer no smaller than this.
+Rounds fractional values towards positive infinity.
+The number must be finite (see isFinite).
+If the value is greater than the highest representable positive integer, the result is that highest positive integer. If the value is smaller than the highest representable negative integer, the result is that highest negative integer.
+num ceil();
+*/
+print((2.5).ceil()); // 3
+print((-2.5).ceil()); // -2
+
+/* 9. floor: The greatest integer no greater than this number.
+Rounds fractional values towards negative infinity.
+The number must be finite (see isFinite).
+If the value is greater than the highest representable positive integer, the result is that highest positive integer. If the value is smaller than the highest representable negative integer, the result is that highest negative integer.
+Implementation
+int floor();*/
+print((2.5).floor()); // 2
+print((-2.5).floor()); // -3
+
+/* 10. ceilToDouble(): 
+The least integer no smaller than this.
+Rounds fractional values towards positive infinity.
+The number must be finite (see isFinite).
+If the value is greater than the highest representable positive integer, the result is that highest positive integer. If the value is smaller than the highest representable negative integer, the result is that highest negative integer.
+num ceil();
+*/
+print((2.5).ceilToDouble()); // 3.0
+print((-2.5).ceilToDouble()); // -2.0
+
+/* 11. floorToDouble()
+Returns the greatest double integer value no greater than this.
+
+If this is already an integer valued double, including -0.0, or it is a non-finite double value, the value is returned unmodified.
+
+For the purpose of rounding, -0.0 is considered to be below 0.0. A number d in the range 0.0 < d < 1.0 will return 0.0.
+
+Implementation
+double floorToDouble();*/
+
+print((2.5).floorToDouble()); // 2.0
+print((-2.5).floorToDouble()); // -3.0
+
+/* 12. clamp: 
+Returns this num clamped to be in the range lowerLimit-upperLimit.
+The comparison is done using compareTo and therefore takes -0.0 into account. This also implies that double.nan is treated as the maximal double value.
+The arguments lowerLimit and upperLimit must form a valid range where lowerLimit.compareTo(upperLimit) <= 0.
+implementation
+num clamp(num lowerLimit, num upperLimit);
+*/
+print(10.5.clamp(5, 10.0)); // 10.0
+print(0.75.clamp(5, 10.0)); // 5
+print((-10).clamp(-5, 5.0)); // -5
+print((-0.0).clamp(-5, 5.0)); // -0.0
+
+/* 13. compareTo: 
+Compares this to other.
+Returns a negative number if this is less than other, zero if they are equal, and a positive number if this is greater than other.
+The ordering represented by this method is a total ordering of num values. All distinct doubles are non-equal, as are all distinct integers, but integers are equal to doubles if they have the same numerical value.
+For doubles, the compareTo operation is different from the partial ordering given by operator==, operator< and operator>. For example, IEEE doubles impose that 0.0 == -0.0 and all comparison operations on NaN return false.
+This function imposes a complete ordering for doubles. When using compareTo, the following properties hold:
+
+All NaN values are considered equal, and greater than any numeric value.
+-0.0 is less than 0.0 (and the integer 0), but greater than any non-zero negative value.
+Negative infinity is less than all other values and positive infinity is greater than all non-NaN values.
+All other values are compared using their numeric value.
+Implementation
+int compareTo(num other);
+*/
+print(1.compareTo(2)); // => -1
+print(2.compareTo(1)); // => 1
+print(1.compareTo(1)); // => 0
+
+// The following comparisons yield different results than the
+// corresponding comparison operators.
+print((-0.0).compareTo(0.0));  // => -1
+print(double.nan.compareTo(double.nan));  // => 0
+print(double.infinity.compareTo(double.nan)); // => -1
+
+// -0.0, and NaN comparison operators have rules imposed by the IEEE
+// standard.
+print(-0.0 == 0.0); // => true
+print(double.nan == double.nan);  // => false
+print(double.infinity < double.nan);  // => false
+print(double.nan < double.infinity);  // => false
+print(double.nan == double.infinity);  // => false
+
+/* 14. remainder: 
+The remainder of the truncating division of this by other.
+The result r of this operation satisfies: this == (this ~/ other) * other + r. As a consequence, the remainder r has the same sign as the dividend this.
+The result is an int, as described by int.remainder, if both this number and other are integers, otherwise the result is a double.
+Implementation
+num remainder(num other);
+*/
+
+print(5.remainder(3)); // 2
+print(-5.remainder(3)); // -2
+print(5.remainder(-3)); // 2
+print(-5.remainder(-3)); // -2
+
+/* 15. round:
+The integer closest to this number.
+Rounds away from zero when there is no closest integer: (3.5).round() == 4 and (-3.5).round() == -4.
+The number must be finite (see isFinite).
+If the value is greater than the highest representable positive integer, the result is that highest positive integer. If the value is smaller than the highest representable negative integer, the result is that highest negative integer.
+Implementation
+int round();
+ */
+print(3.5.round()); // 4
+print(-3.5.round()); // -4
+
+/* 16. roundToDouble
+The double integer value closest to this value.
+Rounds away from zero when there is no closest integer: (3.5).roundToDouble() == 4 and (-3.5).roundToDouble() == -4.
+If this is already an integer valued double, including -0.0, or it is a non-finite double value, the value is returned unmodified.
+For the purpose of rounding, -0.0 is considered to be below 0.0, and -0.0 is therefore considered closer to negative numbers than 0.0. This means that for a value d in the range -0.5 < d < 0.0, the result is -0.0.
+Implementation
+double roundToDouble();
+*/
+
+print(3.5.roundToDouble()); // 4.0
+print(-3.5.roundToDouble()); // -4.0
+
+/* 17. toStringAsExponential
+An exponential string-representation of this number.
+Converts this number to a double before computing the string representation.
+If fractionDigits is given, then it must be an integer satisfying: 0 <= fractionDigits <= 20. In this case the string contains exactly fractionDigits after the decimal point. Otherwise, without the parameter, the returned string uses the shortest number of digits that accurately represent this number.
+If fractionDigits equals 0, then the decimal point is omitted. Examples: 
+Implementation
+String toStringAsExponential([int? fractionDigits]);
+*/
+print(1.toStringAsExponential());       // 1e+0
+print(1.toStringAsExponential(3));      // 1.000e+0
+print(123456.toStringAsExponential());  // 1.23456e+5
+print(123456.toStringAsExponential(3)); // 1.235e+5
+print(123.toStringAsExponential(0));    // 1e+2
+
+/* 18. toStringAsFixed
+A decimal-point string-representation of this number.
+Converts this number to a double before computing the string representation, as by toDouble.
+If the absolute value of this is greater than or equal to 10^21, then this methods returns an exponential representation computed by this.toStringAsExponential(). Otherwise the result is the closest string representation with exactly fractionDigits digits after the decimal point. If fractionDigits equals 0, then the decimal point is omitted.
+The parameter fractionDigits must be an integer satisfying: 0 <= fractionDigits <= 20.
+Implementation
+String toStringAsFixed(int fractionDigits);
+*/
+print(1.toStringAsFixed(3));  // 1.000
+print((4321.12345678).toStringAsFixed(3));  // 4321.123
+print((4321.12345678).toStringAsFixed(5));  // 4321.12346
+print(123456789012345.toStringAsFixed(3));  // 123456789012345.000
+print(10000000000000000.toStringAsFixed(4)); // 10000000000000000.0000
+print(5.25.toStringAsFixed(0)); // 5
+
+/* 19. toStringAsPrecision
+A string representation with precision significant digits.
+Converts this number to a double and returns a string representation of that value with exactly precision significant digits.
+The parameter precision must be an integer satisfying: 1 <= precision <= 21.
+Implementation
+String toStringAsPrecision(int precision);
+*/
+
+print(1.toStringAsPrecision(2));       // 1.0
+print(1e15.toStringAsPrecision(3));    // 1.00e+15
+print(1234567.toStringAsPrecision(3)); // 1.23e+6
+print(1234567.toStringAsPrecision(9)); // 1234567.00
+print(0.00000012345.toStringAsPrecision(15)); // 1.23450000000000e-7
+print(0.0000012345.toStringAsPrecision(15));  // 0.00000123450000000000
+
+/* 20. truncate
+The integer obtained by discarding any fractional digits from this.
+Rounds fractional values towards zero.
+The number must be finite (see isFinite).
+If the value is greater than the highest representable positive integer, the result is that highest positive integer. If the value is smaller than the highest representable negative integer, the result is that highest negative integer.
+Implementation
+int truncate();
+*/
+
+double x = 3.14159;
+int integerPart = x.truncate(); // integerPart is 3
+print(integerPart); // 3
+
+/* 21. truncateToDouble()
+Returns the double integer value obtained by discarding any fractional digits from the double value of this.
+If this is already an integer valued double, including -0.0, or it is a non-finite double value, the value is returned unmodified.
+For the purpose of rounding, -0.0 is considered to be below 0.0. A number d in the range -1.0 < d < 0.0 will return -0.0, and in the range 0.0 < d < 1.0 it will return 0.0.
+Implementation
+double truncateToDouble();
+*/
+double x1= 3.14159;
+double doublep = x1.truncateToDouble(); // integerPart is 3.0
+print(doublep); // 3.0
+
+}
